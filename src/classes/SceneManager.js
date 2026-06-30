@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import BallGroup from './BallGroup.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 
 const _PARTICLE_COUNT = 400;
@@ -25,8 +26,8 @@ export class SceneManager {
     this.scene = null;
     this._particles = null;
     this._camAzimuth = 0;
-    this._camElevation = Math.asin((2.2 - 1.6) / 6.527);
-    this._camDistance = 6.527;
+    this._camElevation = Math.asin((2.2 - 1.6) / 16);
+    this._camDistance = 16;
     this._keysPressed = new Set();
 
     this._initRenderer();
@@ -138,6 +139,7 @@ this.scene.background = textureLoader.load('/src/assets/back2.jpg');
     floor.position.y = -0.05;
     floor.receiveShadow = true;
     this.scene.add(floor);
+    this.balls = new BallGroup(this.scene);
   }
 
   _initParticles() {
